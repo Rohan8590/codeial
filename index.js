@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const port = 8000;
 
+app.use('/', require('./routes'));
+
 app.listen(port,function(err){
     if(err){
         //interpolation is used with ` using which if we put anything inside ${}, it'll get evaluated(like variable or expression)
