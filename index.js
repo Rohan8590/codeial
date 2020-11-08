@@ -2,8 +2,22 @@ const express = require('express');
 const app = express();
 const port = 8000;
 
+//require layouts 
+const expressLayouts = require('express-ejs-layouts');
+
+//use static CSS Javasctipt and images files
+app.use(express.static('./assets'));
+
+//use layouts before the views are rendered in the routes, so we need to tell before that those views belong to some layout
+app.use(expressLayouts);
+//extract styles and scripts from subpages into the layout
+app.set('layout extractStyles', true);
+app.set('layout extractScripts', true);
+
+//use express router
 app.use('/', require('./routes'));
 
+//setup view engine
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
