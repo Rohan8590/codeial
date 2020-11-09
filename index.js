@@ -5,6 +5,15 @@ const port = 8000;
 //require layouts 
 const expressLayouts = require('express-ejs-layouts');
 
+//cookie parser
+const cookieParser = require('cookie-parser');
+
+//database
+const db = require('./config/mongoose');
+
+//reading throught post requests
+app.use(express.urlencoded());
+
 //use static CSS Javasctipt and images files
 app.use(express.static('./assets'));
 
