@@ -14,6 +14,9 @@ const db = require('./config/mongoose');
 //reading throught post requests
 app.use(express.urlencoded());
 
+//setting up cookie parser
+app.use(cookieParser());
+
 //use static CSS Javasctipt and images files
 app.use(express.static('./assets'));
 
