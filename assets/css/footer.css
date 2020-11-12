@@ -1,0 +1,32 @@
+footer {
+  height: 80px;
+  width: 100%;
+  background-color: #8fc0a9;
+  display: flex;
+  margin-top: 100%;
+}
+
+footer p {
+  display: flex;
+  color: #faf3dd;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 20px;
+}
+
+footer ul {
+  display: flex;
+  margin-top: 20px;
+}
+
+footer ul li {
+  display: flex;
+  font-size: 20px;
+  flex-wrap: nowrap;
+}
+
+footer ul li a {
+  text-decoration: none;
+  list-style: none;
+  padding-right: 15px;
+  color: #faf3dd;
+}

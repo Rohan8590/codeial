@@ -1,0 +1,33 @@
+header {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 30px;
+  font-weight: bold;
+  background-color: #68b0ab;
+}
+
+header a {
+  text-decoration: none;
+  color: #faf3dd;
+}
+
+header ul {
+  display: flex;
+  padding-left: 75%;
+  margin-top: 0px;
+}
+
+header ul li {
+  display: flex;
+  font-size: 20px;
+  flex-wrap: nowrap;
+}
+
+header ul li a {
+  text-decoration: none;
+  list-style: none;
+  padding-right: 15px;
+  color: #faf3dd;
+}
