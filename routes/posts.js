@@ -7,5 +7,6 @@ const postsController = require('../controllers/posts_controller');
 
 //checkAuthentication is a function we created in passport-local-startegy in config
 router.post('/create', passport.checkAuthentication, postsController.create);
+router.get('/destroy/:id', passport.checkAuthentication, postsController.destroy);
 
 module.exports = router;
