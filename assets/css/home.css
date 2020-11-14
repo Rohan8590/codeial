@@ -1,0 +1,16 @@
+#home-container {
+  display: flex;
+  height: 100%;
+}
+
+#home-container #feed-posts {
+  width: 70%;
+  padding: 10px;
+}
+
+#home-container #user-friends {
+  width: 30%;
+  height: 200%;
+  padding: 10px;
+  border: 1px solid #68b0ab;
+}
