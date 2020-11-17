@@ -25,6 +25,8 @@ const sassMiddleware = require('node-sass-middleware');
 
 //Connect flash for flash messages
 const flash = require('connect-flash');
+//Middleware for flash
+const customMware = require('./config/middleware');
 
 
 //SASS files to be complied just before server starts
@@ -83,6 +85,7 @@ app.use(passport.setAuthenticatedUser);
 
 //use flash just after where session is being used as it needs session cookie
 app.use(flash());
+app.use(customMware.setFlash);
 
 //use express router
 app.use('/', require('./routes'));
