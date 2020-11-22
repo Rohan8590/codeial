@@ -1,5 +1,9 @@
 //import user model
 const User = require('../models/user');
+//file system to delete previous uploaded avatar
+const fs = require('fs');
+//path required to delete previous uploaded avatar
+const path = require('path');
 
 module.exports.profile = function(req,res){
     User.findById(req.params.id, function(err, user){
@@ -10,14 +14,44 @@ module.exports.profile = function(req,res){
     });
 }
 
-module.exports.update = function(req,res){
-    if(user.id = req.params.id){
-        User.findByIdAndUpdate(req.parmas.id, req.body, function(err,user){
-            req.flash('success', 'Updated!');
+module.exports.update = async function(req,res){
+    // if(user.id = req.params.id){
+    //     User.findByIdAndUpdate(req.parmas.id, req.body, function(err,user){
+    //         req.flash('success', 'Updated!');
+    //         return res.redirect('back');
+    //     });
+    // }
+    // else{
+    //     return res.status(401).send('Unauthorized');
+    // }
+    if(req.user.id == req.params.id){
+        try{
+            let user = await User.findById(req.params.id);
+            User.uploadedAvatar(req, res, function(err){
+                if(err){console.log("****Multer Error: ", err)}
+                
+                user.name = req.body.name;
+                user.email = req.body.email;
+
+                if(req.file){
+                    //if there's already an avatar, delete it
+                    if(user.avatar){
+                        fs.unlinkSync(path.join(__dirname, '..', user.avatar));
+                    }
+                    //saving the path of uploaded file in the avatar field of the user
+                    user.avatar = User.avatarPath + '/' + req.file.filename;
+                }
+                user.save();
+                return res.redirect('back');
+            });
+        }
+        catch(err){
+            req.flash('error', err);
             return res.redirect('back');
-        });
+        }
     }
     else{
+        req.flash('error', 'Unauthorized');
         return res.status(401).send('Unauthorized');
     }
 }

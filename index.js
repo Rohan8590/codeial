@@ -47,6 +47,9 @@ app.use(cookieParser());
 //use static CSS Javasctipt and images files
 app.use(express.static('./assets'));
 
+//making upload path available to the browser
+app.use('/uploads', express.static(__dirname + '/uploads'));
+
 //use layouts before the views are rendered in the routes, so we need to tell before that those views belong to some layout
 app.use(expressLayouts);
 //extract styles and scripts from subpages into the layout
