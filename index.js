@@ -21,6 +21,9 @@ const passportLocal = require('./config/passport-local-strategy');
 //passport jwt
 const passportJWT = require('./config/passport-jwt-strategy');
 
+//google auth
+const passportGoogle = require('./config/passport-google-oath2-strategy');
+
 const MongoStore = require('connect-mongo')(session);
 
 //SASS
